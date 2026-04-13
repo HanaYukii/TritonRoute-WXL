@@ -1977,6 +1977,8 @@ void FlexDRWorker::mazeNetInit(drNet* net) {
   gridGraph.resetStatus();
   // sub term / instterm cost when net is about to route
   initMazeCost_terms(net->getFrNetTerms(), false, true);
+  // unblock planarTerm blocking for own net's I/O pins
+  initMazeCost_planarTerm_helper(net->getFrNetTerms(), false);
   // sub via access cost when net is about to route
   // route_queue does not need to reserve
   if (getFixMode() < 9 && RESERVE_VIA_ACCESS) {
@@ -1994,6 +1996,8 @@ void FlexDRWorker::mazeNetInit(drNet* net) {
 void FlexDRWorker::mazeNetEnd(drNet* net) {
   // add term / instterm cost back when net is about to end
   initMazeCost_terms(net->getFrNetTerms(), true, true);
+  // re-block planarTerm blocking for own net's I/O pins
+  initMazeCost_planarTerm_helper(net->getFrNetTerms(), true);
   if (isFollowGuide()) {
     initMazeCost_guide_helper(net, false);
   }
@@ -2533,14 +2537,15 @@ void FlexDRWorker::route_2() {
       mazeNetInit(net);
       bool isRouted = routeNet(net);
       if (isRouted == false) {
-        // TODO: output maze area
-        cout << "Fatal error: Maze Route cannot find path (" << net->getFrNet()->getName() << "). Connectivity Changed.\n";
+        cout << "Warning: Maze Route cannot find path (" << net->getFrNet()->getName() << "). Will retry in later iterations.\n";
         if (OUT_MAZE_FILE != string("")) {
           gridGraph.print();
         }
-        exit(1);
       }
       mazeNetEnd(net);
+      if (!isRouted) {
+        continue;
+      }
       // incr drc
       route_2_x1(net, rerouteNets);
       if (VERBOSE > 1) {
@@ -2703,19 +2708,13 @@ void FlexDRWorker::route_queue_main(deque<pair<frBlockObject*, pair<bool, int> >
       bool isRouted = routeNet(net);
       if (isRouted == false) {
         frBox routeBox = getRouteBox();
-        // TODO: output maze area
-        cout << "Fatal error: Maze Route cannot find path (" << net->getFrNet()->getName() << ") in " 
+        cout << "Warning: Maze Route cannot find path (" << net->getFrNet()->getName() << ") in "
              << "(" << routeBox.left() / 2000.0 << ", " << routeBox.bottom() / 2000.0
              << ") - (" << routeBox.right() / 2000.0 << ", " << routeBox.top() / 2000.0
-             << "). Connectivity Changed.\n";
-        if (OUT_MAZE_FILE == string("")) {
-          if (VERBOSE > 0) {
-            cout <<"Waring: no output maze log specified, skipped writing maze log" <<endl;
-          }
-        } else {
+             << "). Will retry in later iterations.\n";
+        if (OUT_MAZE_FILE != string("")) {
           gridGraph.print();
         }
-        exit(1);
       }
       mazeNetEnd(net);
       net->addNumReroutes();
@@ -3089,32 +3088,13 @@ void FlexDRWorker::route() {
         mazeNetInit(net);
         bool isRouted = routeNet(net);
         if (isRouted == false) {
-          // TODO: output maze area
-          cout << "Fatal error: Maze Route cannot find path (" << net->getFrNet()->getName() << ") in " 
-             << "(" << routeBox.left() / 2000.0 << ", " << routeBox.bottom() / 2000.0
-             << ") - (" << routeBox.right() / 2000.0 << ", " << routeBox.top() / 2000.0
-             << "). Connectivity Changed.\n";
-          cout << "#local pin = " << net->getPins().size() << endl;
-          for (auto &pin: net->getPins()) {
-            if (pin->hasFrTerm()) {
-              if (pin->getFrTerm()->typeId() == frcInstTerm) {
-                auto instTerm = static_cast<frInstTerm*>(pin->getFrTerm());
-                cout << "  instTerm " << instTerm->getInst()->getName() << "/" << instTerm->getTerm()->getName() << "\n";
-              } else {
-                cout << "  term\n";
-              }
-            } else {
-              cout << "  boundary pin\n";
-            }
-          }
-          if (OUT_MAZE_FILE == string("")) {
-            if (VERBOSE > 0) {
-              cout <<"Waring: no output maze log specified, skipped writing maze log" <<endl;
-            }
-          } else {
+          cout << "Warning: Maze Route cannot find path (" << net->getFrNet()->getName() << ") in "
+               << "(" << routeBox.left() / 2000.0 << ", " << routeBox.bottom() / 2000.0
+               << ") - (" << routeBox.right() / 2000.0 << ", " << routeBox.top() / 2000.0
+               << "). Will retry in later iterations.\n";
+          if (OUT_MAZE_FILE != string("")) {
             gridGraph.print();
           }
-          exit(1);
         }
         mazeNetEnd(net);
       }

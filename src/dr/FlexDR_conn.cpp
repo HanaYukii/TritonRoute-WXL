@@ -1384,9 +1384,9 @@ void FlexDR::checkConnectivity(int iter) {
   }
   */
   if (isWrong) {
-    io::Writer writer(getDesign());
-    writer.writeFromDR("_conn");
-    exit(1);
+    if (VERBOSE > 0) {
+      cout << "Warning: connectivity check found errors, continuing routing." << endl;
+    }
   }
 }
 

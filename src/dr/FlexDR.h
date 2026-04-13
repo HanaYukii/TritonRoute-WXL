@@ -191,6 +191,7 @@ namespace fr {
 
     // utility
     void reportDRC();
+    void reportViolations();
   };
 
   class FlexDRWorker;
@@ -633,6 +634,7 @@ namespace fr {
     void initMazeCost();
     void initMazeCost_connFig();
     void initMazeCost_planarTerm();
+    void initMazeCost_planarTerm_helper(const std::set<frBlockObject*> &objs, bool isAddCost);
     void initMazeCost_pin(drNet *net, bool isAddPathCost);
     void initMazeCost_fixedObj();
     void initMazeCost_terms(const std::set<frBlockObject*> &objs, bool isAddPathCost, bool isSkipVia = false);

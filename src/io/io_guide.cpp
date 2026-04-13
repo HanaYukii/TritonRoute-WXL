@@ -113,8 +113,7 @@ void io::Parser::genGuides_merge(vector<frRect> &rects, vector<map<frCoord, boos
           auto beginIdx = it->lower();
           auto endIdx   = it->upper();
           bool haveLU = false;
-          // lower layer intersection
-          if (lNum - 2 >= 0) {
+          if (lNum - 2 >= BOTTOM_ROUTING_LAYER) {
             auto nbrLayerNum = lNum - 2;
             for (auto it2 = intvs[nbrLayerNum].lower_bound(beginIdx); 
                       it2 != intvs[nbrLayerNum].end() && it2->first <= endIdx; it2++) {
@@ -125,7 +124,7 @@ void io::Parser::genGuides_merge(vector<frRect> &rects, vector<map<frCoord, boos
               }
             }
           }
-          if (lNum + 2 < (int)intvs.size() && !haveLU) {
+          if (lNum + 2 <= TOP_ROUTING_LAYER && lNum + 2 < (int)intvs.size() && !haveLU) {
             auto nbrLayerNum = lNum + 2;
             for (auto it2 = intvs[nbrLayerNum].lower_bound(beginIdx); 
                       it2 != intvs[nbrLayerNum].end() && it2->first <= endIdx; it2++) {
@@ -137,15 +136,10 @@ void io::Parser::genGuides_merge(vector<frRect> &rects, vector<map<frCoord, boos
             }
           }
           if (!haveLU) {
-            // add touching guide;
-            //cout <<"found touching guide" <<endl;
-            if (lNum + 2 < (int)intvs.size()) {
+            if (lNum + 2 < (int)intvs.size() && lNum + 2 <= TOP_ROUTING_LAYER) {
               touchGuides.push_back(make_tuple(beginIdx, prevTrackIdx, trackIdx, lNum + 2));
-            } else if (lNum - 2 >= 0) {
+            } else if (lNum - 2 >= BOTTOM_ROUTING_LAYER) {
               touchGuides.push_back(make_tuple(beginIdx, prevTrackIdx, trackIdx, lNum - 2));
-            } else {
-              cout <<"Error: genGuides_merge cannot find touching layer" <<endl;
-              exit(1);
             }
           }
         }

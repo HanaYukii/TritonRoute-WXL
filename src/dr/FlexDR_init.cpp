@@ -3001,11 +3001,9 @@ void FlexDRWorker::initMazeCost_ap() {
           gridGraph.resetBlocked(mi.x(), mi.y(), mi.z(), frDirEnum::U);
         }
 
-        if (!ap->hasValidAccess(frDirEnum::D)) {
-          gridGraph.setBlocked(mi.x(), mi.y(), mi.z(), frDirEnum::D);
-        } else {
-          gridGraph.resetBlocked(mi.x(), mi.y(), mi.z(), frDirEnum::D);
-        }
+        // D access is never evaluated by PA (always defaults to false),
+        // so skip blocking D here to allow via-down from pin layer
+        gridGraph.resetBlocked(mi.x(), mi.y(), mi.z(), frDirEnum::D);
         
         //if (ap->hasValidAccess(frDirEnum::E) ||
         //    ap->hasValidAccess(frDirEnum::S) ||
@@ -5263,22 +5261,16 @@ void FlexDRWorker::initMazeCost_planarTerm() {
         box.set(boostb.min_corner().x(), boostb.min_corner().y(), boostb.max_corner().x(), boostb.max_corner().y());
         FlexMazeIdx mIdx1, mIdx2;
         gridGraph.getIdxBox(mIdx1, mIdx2, box);
-        bool isPinRectHorz = (box.right() - box.left()) > (box.top() - box.bottom());
+        bool isLayerHorz = (getTech()->getLayer(layerNum)->getDir() == frcHorzPrefRoutingDir);
         for (int i = mIdx1.x(); i <= mIdx2.x(); i++) {
           for (int j = mIdx1.y(); j <= mIdx2.y(); j++) {
             FlexMazeIdx mIdx(i, j, zIdx);
-            gridGraph.setBlocked(i, j, zIdx, frDirEnum::U);
-            gridGraph.setBlocked(i, j, zIdx, frDirEnum::D);
-            if (isPinRectHorz) {
+            if (isLayerHorz) {
               gridGraph.setBlocked(i, j, zIdx, frDirEnum::N);
               gridGraph.setBlocked(i, j, zIdx, frDirEnum::S);
-              // initMazeCost_ap_planarGrid_helper(mIdx, frDirEnum::N, 0, true);
-              // initMazeCost_ap_planarGrid_helper(mIdx, frDirEnum::S, 0, true);
             } else {
               gridGraph.setBlocked(i, j, zIdx, frDirEnum::W);
               gridGraph.setBlocked(i, j, zIdx, frDirEnum::E);
-              // initMazeCost_ap_planarGrid_helper(mIdx, frDirEnum::W, 0, true);
-              // initMazeCost_ap_planarGrid_helper(mIdx, frDirEnum::E, 0, true);
             }
           }
         }
@@ -5318,6 +5310,54 @@ void FlexDRWorker::initMazeCost_planarTerm() {
   }
 }
 
+void FlexDRWorker::initMazeCost_planarTerm_helper(const set<frBlockObject*> &objs, bool isAddCost) {
+  for (auto &obj: objs) {
+    if (obj->typeId() != frcTerm) {
+      continue;
+    }
+    auto term = static_cast<frTerm*>(obj);
+    for (auto &uPin: term->getPins()) {
+      for (auto &uPinFig: uPin->getFigs()) {
+        auto pinFig = uPinFig.get();
+        if (pinFig->typeId() != frcRect) {
+          continue;
+        }
+        auto rpinRect = static_cast<frRect*>(pinFig);
+        frLayerNum layerNum = rpinRect->getLayerNum();
+        if (getTech()->getLayer(layerNum)->getType() != frLayerTypeEnum::ROUTING) {
+          continue;
+        }
+        frMIdx zIdx = gridGraph.getMazeZIdx(layerNum);
+        frBox box;
+        rpinRect->getBBox(box);
+        FlexMazeIdx mIdx1, mIdx2;
+        gridGraph.getIdxBox(mIdx1, mIdx2, box);
+        bool isLayerHorz = (getTech()->getLayer(layerNum)->getDir() == frcHorzPrefRoutingDir);
+        for (int i = mIdx1.x(); i <= mIdx2.x(); i++) {
+          for (int j = mIdx1.y(); j <= mIdx2.y(); j++) {
+            if (isAddCost) {
+              if (isLayerHorz) {
+                gridGraph.setBlocked(i, j, zIdx, frDirEnum::N);
+                gridGraph.setBlocked(i, j, zIdx, frDirEnum::S);
+              } else {
+                gridGraph.setBlocked(i, j, zIdx, frDirEnum::W);
+                gridGraph.setBlocked(i, j, zIdx, frDirEnum::E);
+              }
+            } else {
+              if (isLayerHorz) {
+                gridGraph.resetBlocked(i, j, zIdx, frDirEnum::N);
+                gridGraph.resetBlocked(i, j, zIdx, frDirEnum::S);
+              } else {
+                gridGraph.resetBlocked(i, j, zIdx, frDirEnum::W);
+                gridGraph.resetBlocked(i, j, zIdx, frDirEnum::E);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
 // void FlexDRWorker::initMazeCost_pin() {
 //   vector<rq_rptr_value_t<frBlockObject> > result;

@@ -1857,7 +1857,6 @@ void FlexGR::layerAssign_net(frNet *net) {
   // cout << "@@@ end debug @@@\n";
 
   for (frLayerNum layerNum = 0; layerNum < cmap->getNumLayers(); layerNum++) {
-    // cout << " layerNum == " << layerNum << ", cost = " << bestLayerCosts[rootIdx][layerNum] << endl;
     if (bestLayerCosts[rootIdx][layerNum] < minCost) {
       minCostLayerNum = layerNum;
       minCost = bestLayerCosts[rootIdx][layerNum];
@@ -2467,6 +2466,12 @@ void FlexGR::writeToGuide() {
         pathSeg->getPoints(bp, ep);
         frLayerNum layerNum;
         layerNum = pathSeg->getLayerNum();
+        if (layerNum < BOTTOM_ROUTING_LAYER) {
+          layerNum = BOTTOM_ROUTING_LAYER;
+        }
+        if (layerNum > TOP_ROUTING_LAYER) {
+          layerNum = TOP_ROUTING_LAYER;
+        }
         auto routeGuide = make_unique<frGuide>();
         routeGuide->setPoints(bp, ep);
         routeGuide->setBeginLayerNum(layerNum);
@@ -2487,6 +2492,18 @@ void FlexGR::writeToGuide() {
       frLayerNum beginLayerNum, endLayerNum;
       beginLayerNum = via->getViaDef()->getLayer1Num();
       endLayerNum = via->getViaDef()->getLayer2Num();
+      if (beginLayerNum < BOTTOM_ROUTING_LAYER && endLayerNum < BOTTOM_ROUTING_LAYER) {
+        continue;
+      }
+      if (beginLayerNum > TOP_ROUTING_LAYER && endLayerNum > TOP_ROUTING_LAYER) {
+        continue;
+      }
+      if (beginLayerNum < BOTTOM_ROUTING_LAYER) {
+        beginLayerNum = BOTTOM_ROUTING_LAYER;
+      }
+      if (endLayerNum > TOP_ROUTING_LAYER) {
+        endLayerNum = TOP_ROUTING_LAYER;
+      }
 
       auto viaGuide = make_unique<frGuide>();
       viaGuide->setPoints(loc, loc);
@@ -2524,7 +2541,9 @@ void FlexGR::writeToGuide() {
         }
       }
 
-      for (auto layerNum = minPinLayerNum; (layerNum + 2) <= max(minPinLayerNum + 4, maxPinLayerNum) && (layerNum + 2) <= design->getTech()->getTopLayerNum(); layerNum += 2) {
+      frLayerNum startLayerNum = max(minPinLayerNum, (frLayerNum)BOTTOM_ROUTING_LAYER);
+      frLayerNum endLayerNum = min(max(startLayerNum + 4, maxPinLayerNum), (frLayerNum)TOP_ROUTING_LAYER);
+      for (auto layerNum = startLayerNum; (layerNum + 2) <= endLayerNum && (layerNum + 2) <= design->getTech()->getTopLayerNum(); layerNum += 2) {
         auto viaGuide = make_unique<frGuide>();
         viaGuide->setPoints(loc, loc);
         viaGuide->setBeginLayerNum(layerNum);

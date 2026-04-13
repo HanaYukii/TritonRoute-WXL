@@ -1909,8 +1909,7 @@ void FlexGCWorker::checkMetalShape_rectOnly(gcPin* pin) {
   // rect only is true
   if (rects.size() == 1) {
     return;
-  }
-  // only show marker if fixed area does not contain marker area
+  }  // only show marker if fixed area does not contain marker area
   vector<gtl::point_data<frCoord> > concaveCorners;
   // get concave corners of the polygon
   for (auto &edges: pin->getPolygonEdges()) {

@@ -30,7 +30,6 @@
 #include <fstream>
 #include <sstream>
 #include <exception>
-
 #include "global.h"
 #include "io/io.h"
 #include "db/tech/frConstraint.h"
@@ -972,39 +971,93 @@ int io::Parser::getDefTerminals(defrCallbackType_e type, defiPin* term, defiUser
     cout << "Warning: DEF " << term->pinName() << " has no direction\n";
   }
 
-  if (term->hasPort()) {
-    cout <<"Error: multiple pin ports existing in DEF" <<endl;
-    exit(1);
-  } else {
-    //cout <<"  pinName  = " <<term->pinName() <<endl;
-    //cout <<"  hasLayer = " <<term->hasLayer() <<endl;
-    //cout <<"  numLayer = " <<term->numLayer() <<endl;
-    //cout <<"  numPolys = " <<term->numPolygons() <<endl;
-    //cout <<"  numPorts = " <<term->numPorts() <<endl;
+  auto uTermIn = make_unique<frTerm>(term->pinName());
+  auto termIn = uTermIn.get();
+  termIn->setId(((io::Parser*)data)->numTerms);
+  ((io::Parser*)data)->numTerms++;
+  termIn->setType(termType);
+  termIn->setDirection(termDirection);
 
-    // term
-    auto uTermIn = make_unique<frTerm>(term->pinName());
-    auto termIn = uTermIn.get();
-    termIn->setId(((io::Parser*)data)->numTerms);
-    ((io::Parser*)data)->numTerms++;
-    termIn->setType(termType);
-    termIn->setDirection(termDirection);
-    // term should add pin
-    // pin
+  if (term->hasPort()) {
+    for (int portIdx = 0; portIdx < term->numPorts(); ++portIdx) {
+      auto port = term->pinPort(portIdx);
+      auto pinIn = make_unique<frPin>();
+      pinIn->setId(portIdx);
+
+      int placeX = port->hasPlacement() ? port->placementX() : 0;
+      int placeY = port->hasPlacement() ? port->placementY() : 0;
+      frOrientEnum placeOrient = port->hasPlacement() ? frOrientEnum(port->orient()) : frOrientEnum(0);
+
+      for (int i = 0; i < port->numLayer(); ++i) {
+        string layer = port->layer(i);
+        if (((io::Parser*)data)->tech->name2layer.find(layer) == ((io::Parser*)data)->tech->name2layer.end()) {
+          if (VERBOSE > -1) {
+            cout <<"Error: unsupported layer: " <<layer <<endl;
+          }
+          exit(1);
+        }
+
+        frLayerNum layerNum = ((io::Parser*)data)->tech->name2layer[layer]->getLayerNum();
+        frCoord xl = 0, yl = 0, xh = 0, yh = 0;
+        port->bounds(i, &xl, &yl, &xh, &yh);
+        unique_ptr<frRect> pinFig = make_unique<frRect>();
+        pinFig->setBBox(frBox(xl, yl, xh, yh));
+        pinFig->addToPin(pinIn.get());
+        pinFig->setLayerNum(layerNum);
+        pinFig->move(frTransform(placeX, placeY, placeOrient));
+        frBox transformedBBox;
+        pinFig->getBBox(transformedBBox);
+        unique_ptr<frPinFig> uptr(std::move(pinFig));
+        pinIn->addPinFig(uptr);
+        Rectangle pinFigRect(transformedBBox.left(), transformedBBox.bottom(), transformedBBox.right(), transformedBBox.top());
+        pinIn->addLayerShape(layerNum, pinFigRect);
+      }
+
+      for (int i = 0; i < port->numPolygons(); ++i) {
+        string layer = port->polygonName(i);
+        if (((io::Parser*)data)->tech->name2layer.find(layer) == ((io::Parser*)data)->tech->name2layer.end()) {
+          if (VERBOSE > -1) {
+            cout <<"Error: unsupported layer: " <<layer <<endl;
+          }
+          exit(1);
+        }
+
+        frLayerNum layerNum = ((io::Parser*)data)->tech->name2layer[layer]->getLayerNum();
+        auto polyPoints = port->getPolygon(i);
+        frCollection<frPoint> tmpPoints;
+        for (int j = 0; j < polyPoints.numPoints; j++) {
+          tmpPoints.push_back(frPoint((polyPoints.x)[j], (polyPoints.y)[j]));
+        }
+
+        unique_ptr<frPolygon> pinFig = make_unique<frPolygon>();
+        pinFig->setPoints(tmpPoints);
+        pinFig->addToPin(pinIn.get());
+        pinFig->setLayerNum(layerNum);
+        pinFig->move(frTransform(placeX, placeY, placeOrient));
+        unique_ptr<frPinFig> uptr(std::move(pinFig));
+        pinIn->addPinFig(uptr);
+        Polygon pinFigPoly;
+        frVector<Point> boostPolyPoints;
+        frTransform tmpXform(placeX, placeY, placeOrient);
+        for (auto &pt: tmpPoints) {
+          pt.transform(tmpXform);
+          boostPolyPoints.push_back(Point(pt.x(), pt.y()));
+        }
+        boost::polygon::set_points(pinFigPoly, boostPolyPoints.begin(), boostPolyPoints.end());
+        pinIn->addLayerShape(layerNum, pinFigPoly);
+      }
+
+      termIn->addPin(pinIn);
+    }
+  } else {
     auto pinIn  = make_unique<frPin>();
     pinIn->setId(0);
-    //pinIn->setTerm(termIn);
-    // pin should add pinFigs
-    // term
-    //frOrientEnum orient = frOrientEnum(term->orient());
     for (int i = 0; i < term->numLayer(); ++i) {
-      //cout <<"  layerName= " <<term->layer(i) <<endl;
       string layer = term->layer(i);
       if (((io::Parser*)data)->tech->name2layer.find(layer) == ((io::Parser*)data)->tech->name2layer.end()) {
         if (VERBOSE > -1) {
           cout <<"Error: unsupported layer: " <<layer <<endl;
         }
-        //continue;
         exit(1);
       }
 
@@ -1014,34 +1067,24 @@ int io::Parser::getDefTerminals(defrCallbackType_e type, defiPin* term, defiUser
       frCoord xh = 0;
       frCoord yh = 0;
       term->bounds(i, &xl, &yl, &xh, &yh);
-      // pinFig
       unique_ptr<frRect> pinFig = make_unique<frRect>();
       pinFig->setBBox(frBox(xl, yl, xh, yh));
       pinFig->addToPin(pinIn.get());
       pinFig->setLayerNum(layerNum);
       pinFig->move(frTransform(term->placementX(), term->placementY(), frOrientEnum(term->orient())));
-      //cout <<"move" <<endl;
       frBox transformedBBox;
       pinFig->getBBox(transformedBBox);
-      // pinFig completed
-      // pin
       unique_ptr<frPinFig> uptr(std::move(pinFig));
       pinIn->addPinFig(uptr);
-      // Rectangle pinFigRect(xl, yl, xh, yh);
-      // std::cout << "Rect" << transformedBBox.left() << ", " << transformedBBox.bottom() << ", " << transformedBBox.right() << ", " << transformedBBox.top() << "\n";
       Rectangle pinFigRect(transformedBBox.left(), transformedBBox.bottom(), transformedBBox.right(), transformedBBox.top());
       pinIn->addLayerShape(layerNum, pinFigRect);
-      // pin completed
     }
-    // polygon
     for (int i = 0; i < term->numPolygons(); ++i) {
-      //cout <<"  polyName= " <<term->polygonName(i) <<endl;
       string layer = term->polygonName(i);
       if (((io::Parser*)data)->tech->name2layer.find(layer) == ((io::Parser*)data)->tech->name2layer.end()) {
         if (VERBOSE > -1) {
           cout <<"Error: unsupported layer: " <<layer <<endl;
         }
-        //continue;
         exit(1);
       }
 
@@ -1052,14 +1095,11 @@ int io::Parser::getDefTerminals(defrCallbackType_e type, defiPin* term, defiUser
         tmpPoints.push_back(frPoint((polyPoints.x)[j], (polyPoints.y)[j]));
       }
 
-      // pinFig
       unique_ptr<frPolygon> pinFig = make_unique<frPolygon>();
       pinFig->setPoints(tmpPoints);
       pinFig->addToPin(pinIn.get());
       pinFig->setLayerNum(layerNum);
       pinFig->move(frTransform(term->placementX(), term->placementY(), frOrientEnum(term->orient())));
-      // pinFig completed
-      // pin
       unique_ptr<frPinFig> uptr(std::move(pinFig));
       pinIn->addPinFig(uptr);
       Polygon pinFigPoly;
@@ -1068,16 +1108,13 @@ int io::Parser::getDefTerminals(defrCallbackType_e type, defiPin* term, defiUser
       for (auto &pt: tmpPoints) {
         pt.transform(tmpXform);
         boostPolyPoints.push_back(Point(pt.x(), pt.y()));
-        // std::cout << pt.x() << " " << pt.y() << "\n";
       }
       boost::polygon::set_points(pinFigPoly, boostPolyPoints.begin(), boostPolyPoints.end());
       pinIn->addLayerShape(layerNum, pinFigPoly);
-      // pin completed
     }
     termIn->addPin(pinIn);
-    //cout <<"  placeXY  = (" <<term->placementX() <<"," <<term->placementY() <<")" <<endl;
-    ((io::Parser*)data)->tmpBlock->addTerm(uTermIn);
   }
+  ((io::Parser*)data)->tmpBlock->addTerm(uTermIn);
 
   if (((io::Parser*)data)->tmpBlock->terms.size() % 1000 == 0) {
     cout <<"defIn read " <<((io::Parser*)data)->tmpBlock->terms.size() <<" pins" <<endl;
@@ -5292,17 +5329,19 @@ void io::Parser::readLef() {
   lefrSetViaCbk(getLefVias);
   lefrSetViaRuleCbk(getLefViaRules);
 
-  if ((f = fopen(LEF_FILE.c_str(),"r")) == 0) {
-    cout <<"Couldn't open lef file" <<endl;
-    exit(2);
-  }
+  for (auto &lefFile : LEF_FILES) {
+    if ((f = fopen(lefFile.c_str(),"r")) == 0) {
+      cout <<"Couldn't open lef file: " <<lefFile <<endl;
+      exit(2);
+    }
 
-  res = lefrRead(f, LEF_FILE.c_str(), (lefiUserData)this);
-  if (res != 0) {
-    cout <<"LEF parser returns an error!" <<endl;
-    exit(2);
+    res = lefrRead(f, lefFile.c_str(), (lefiUserData)this);
+    if (res != 0) {
+      cout <<"LEF parser returns an error! (" <<lefFile <<")" <<endl;
+      exit(2);
+    }
+    fclose(f);
   }
-  fclose(f);
 
   lefrClear();
 }
@@ -5359,6 +5398,7 @@ void io::Parser::readLefDef() {
     cout <<"#nets:       " <<design->getTopBlock()->nets.size()  <<endl;
     //cout <<"#pins:       " <<numPins <<endl;
   }
+
   //cout <<flush;
 
   if (enableOutput) {

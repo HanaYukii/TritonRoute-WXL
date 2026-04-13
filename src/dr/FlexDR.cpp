@@ -1763,14 +1763,10 @@ void FlexDR::initDR(int size, bool enableDRC) {
   if (VERBOSE > 0) {
     if (enableDRC) {
       cout <<"  number of violations = "       <<getDesign()->getTopBlock()->getNumMarkers() <<endl;
+      reportViolations();
     } else {
       cout <<"  number of quick violations = " <<numQuickMarkers <<endl;
     }
-    //cout <<"    by layer and type :" <<endl;
-    //cout <<"           MetSpc EOLSpc Loop CutSpc AdjCut CorSpc Others Totals" <<endl;
-    //cout <<"    Metal1      0      0    0      0      0      0      0      0" <<endl;
-    //cout <<"    Totals      0      0    0      0      0      0      0      0" <<endl;
-    //cout <<"cpu time = 00:00:00, elapsed time = 00:00:00, memory = 0000.00 (MB), peak = 0000.00 (MB)" <<endl;
     t.print();
     cout <<flush;
   }
@@ -2079,14 +2075,10 @@ void FlexDR::searchRepair(int iter, int size, int offset, int mazeEndIter,
   if (VERBOSE > 0) {
     if (enableDRC) {
       cout <<"  number of violations = " <<getDesign()->getTopBlock()->getNumMarkers() <<endl;
+      reportViolations();
     } else {
       cout <<"  number of quick violations = " <<numQuickMarkers <<endl;
     }
-    //cout <<"    by layer and type :" <<endl;
-    //cout <<"           MetSpc EOLSpc Loop CutSpc AdjCut CorSpc Others Totals" <<endl;
-    //cout <<"    Metal1      0      0    0      0      0      0      0      0" <<endl;
-    //cout <<"    Totals      0      0    0      0      0      0      0      0" <<endl;
-    //cout <<"cpu time = 00:00:00, elapsed time = 00:00:00, memory = 0000.00 (MB), peak = 0000.00 (MB)" <<endl;
     t.print();
     cout <<flush;
   }
@@ -2188,6 +2180,80 @@ void FlexDR::end() {
     cout <<endl <<endl <<flush;
     guard.restore();
   }
+}
+
+void FlexDR::reportViolations() {
+  map<string, int> typeCnt;
+  map<string, map<string, int>> layerTypeCnt;
+
+  for (auto &marker : getDesign()->getTopBlock()->getMarkers()) {
+    auto con = marker->getConstraint();
+    string typeName = "unknown";
+    if (con) {
+      switch (con->typeId()) {
+        case frConstraintTypeEnum::frcShortConstraint:
+          if (getTech()->getLayer(marker->getLayerNum())->getType() == frLayerTypeEnum::CUT)
+            typeName = "CShort";
+          else
+            typeName = "Short";
+          break;
+        case frConstraintTypeEnum::frcMinWidthConstraint:        typeName = "MinWid";  break;
+        case frConstraintTypeEnum::frcSpacingConstraint:         typeName = "MetSpc";  break;
+        case frConstraintTypeEnum::frcSpacingEndOfLineConstraint:typeName = "EOLSpc";  break;
+        case frConstraintTypeEnum::frcSpacingTablePrlConstraint: typeName = "MetSpc";  break;
+        case frConstraintTypeEnum::frcSpacingSamenetConstraint:  typeName = "MetSpc";  break;
+        case frConstraintTypeEnum::frcCutSpacingConstraint:      typeName = "CutSpc";  break;
+        case frConstraintTypeEnum::frcMinStepConstraint:         typeName = "MinStp";  break;
+        case frConstraintTypeEnum::frcLef58MinStepConstraint:    typeName = "MinStp";  break;
+        case frConstraintTypeEnum::frcNonSufficientMetalConstraint: typeName = "NSMet"; break;
+        case frConstraintTypeEnum::frcOffGridConstraint:         typeName = "OffGrid"; break;
+        case frConstraintTypeEnum::frcMinEnclosedAreaConstraint: typeName = "MinHole"; break;
+        case frConstraintTypeEnum::frcAreaConstraint:            typeName = "MinArea"; break;
+        case frConstraintTypeEnum::frcLef58CornerSpacingConstraint: typeName = "CorSpc"; break;
+        case frConstraintTypeEnum::frcLef58CutSpacingConstraint: typeName = "CutSpc";  break;
+        case frConstraintTypeEnum::frcLef58RectOnlyConstraint:   typeName = "RectOnly"; break;
+        case frConstraintTypeEnum::frcLef58RightWayOnGridOnlyConstraint: typeName = "RWGrid"; break;
+        case frConstraintTypeEnum::frcRecheckConstraint:         typeName = "Recheck"; break;
+        default:                                                 typeName = "unknown"; break;
+      }
+    }
+    typeCnt[typeName]++;
+    string layerName;
+    if (getTech()->getLayer(marker->getLayerNum())->getType() == frLayerTypeEnum::CUT &&
+        marker->getLayerNum() - 1 >= getTech()->getBottomLayerNum()) {
+      layerName = getTech()->getLayer(marker->getLayerNum() - 1)->getName();
+    } else {
+      layerName = getTech()->getLayer(marker->getLayerNum())->getName();
+    }
+    layerTypeCnt[layerName][typeName]++;
+  }
+
+  if (typeCnt.empty()) return;
+
+  // collect all violation types that appear
+  vector<string> typeNames;
+  for (auto &kv : typeCnt) {
+    typeNames.push_back(kv.first);
+  }
+
+  // print type summary
+  cout << "    violation type summary:" << endl;
+  for (auto &tn : typeNames) {
+    cout << "      " << tn << " = " << typeCnt[tn] << endl;
+  }
+
+  // print per-layer breakdown
+  cout << "    violations by layer:" << endl;
+  for (auto &lkv : layerTypeCnt) {
+    int layerTotal = 0;
+    for (auto &tkv : lkv.second) layerTotal += tkv.second;
+    cout << "      " << lkv.first << " (" << layerTotal << "):";
+    for (auto &tkv : lkv.second) {
+      cout << " " << tkv.first << "=" << tkv.second;
+    }
+    cout << endl;
+  }
+
 }
 
 void FlexDR::reportDRC() {

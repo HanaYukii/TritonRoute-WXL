@@ -50,7 +50,7 @@ int readParams(const string &fileName) {
         string field = line.substr(0, pos);
         string value = line.substr(pos + 1);
         stringstream ss(value);
-        if (field == "lef")           { LEF_FILE = value; ++readParamCnt;}
+        if (field == "lef")           { LEF_FILES.push_back(value); ++readParamCnt;}
         else if (field == "def")      { DEF_FILE = value; REF_OUT_FILE = DEF_FILE; ++readParamCnt;}
         else if (field == "guide")    { GUIDE_FILE = value; ++readParamCnt;}
         else if (field == "outputTA") { OUTTA_FILE = value; ++readParamCnt;}
@@ -122,7 +122,7 @@ int main(int argc, char** argv) {
   //     <<"SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
   //     <<"\n";
   if (argc == 1) {
-    cout <<"Error: usage ./TritonRoute -lef <LEF_FILE> -def <DEF_FILE> -guide <GUIDE_FILE> -output <OUTPUT_DEF>" <<endl;
+    cout <<"Error: usage ./TritonRoute -lef <LEF_FILE> [-lef <LEF_FILE2> ...] -def <DEF_FILE> -guide <GUIDE_FILE> -output <OUTPUT_DEF> [-bottomLayer <NUM>] [-topLayer <NUM>]" <<endl;
     return 2;
   }
 
@@ -139,8 +139,7 @@ int main(int argc, char** argv) {
       if (strcmp(*argv, "-lef") == 0) {
         argv++;
         argc--;
-        LEF_FILE = *argv;
-        //cout <<"lef: " <<LEF_FILE <<endl;
+        LEF_FILES.push_back(*argv);
       } else if (strcmp(*argv, "-def") == 0) {
         argv++;
         argc--;
@@ -166,7 +165,14 @@ int main(int argc, char** argv) {
         argv++;
         argc--;
         VERBOSE = atoi(*argv);
-        //cout <<"output: " <<OUT_FILE <<endl;
+      } else if (strcmp(*argv, "-bottomLayer") == 0) {
+        argv++;
+        argc--;
+        BOTTOM_ROUTING_LAYER = atoi(*argv);
+      } else if (strcmp(*argv, "-topLayer") == 0) {
+        argv++;
+        argc--;
+        TOP_ROUTING_LAYER = atoi(*argv);
       } else {
         cout <<"ERROR: Illegal command line option: " <<*argv <<endl;
         return 2;

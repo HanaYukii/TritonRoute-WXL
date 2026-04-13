@@ -341,7 +341,7 @@ unsigned FlexGRCMap::getNumBlkTracks(bool isHorz, frLayerNum lNum, const set<frC
         actBloatDist = calcBloatDist(obj, lNum, boostB, false);
       }
     }
-    if (obj->typeId() == frcBlockage || obj->typeId() == frcInstBlockage) {
+    if (obj->typeId() == frcInstBlockage) {
       auto inst = (static_cast<frInstBlockage*>(obj))->getInst();
       if (inst->getRefBlock()->getMacroClass() == MacroClassEnum::BLOCK) {
         // actBloatDist = calcBloatDist(obj, lNum, boostB);
@@ -349,7 +349,6 @@ unsigned FlexGRCMap::getNumBlkTracks(bool isHorz, frLayerNum lNum, const set<frC
         actBloatDist = 1.5 * layer->getPitch();
       }
     }
-
     if (openTrackLocs.empty()) {
       break;
     }
