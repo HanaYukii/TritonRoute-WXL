@@ -1,0 +1,46 @@
+# Difficulty scoring configuration — lxp32c augmented tiles
+# Calibrated from 8_levels_300x300_lxp32c_augmented_training_set
+# AI avg/net range: 1.0 ~ 2.776 (success cases), up to 11.0 (routing failure)
+#
+# Use this config for lxp32c-based cases. Use config.yaml for generator cases.
+
+scoring:
+  dimensions:
+    density:
+      metric: drv_iter0             # DRV@iter0 — perfect ρ=1.0 with Benson levels
+      min_val: 0                    # 0 DRV = easiest
+      max_val: 350                  # L8 (1580 nets) = 292, headroom for denser tiles
+      invert: false                 # higher DRV = harder
+      secondary_metric: shorts
+    complexity:
+      metric: avg_per_net
+      min_val: 1.0
+      max_val: 3.5              # lxp32c range: 1.0-2.776, headroom for harder tiles
+      invert: false
+    track:
+      metric: drv_i0_cov
+      min_val: 0.0
+      max_val: 0.46
+      invert: false
+
+  levels:
+    - name: Easy
+      max_score: 0.25
+    - name: Medium
+      max_score: 0.50
+    - name: Hard
+      max_score: 0.75
+    - name: Very Hard
+      max_score: 1.0
+
+  tier1:
+    drv_iter0_threshold: 2000
+    shorts_threshold: 0
+
+tritonroute:
+  openroad_bin: ~/OpenROAD/build/bin/openroad
+  lef_path: /tmp/asap7_simplified.tlef    # ASAP7 LEF for lxp32c
+  bottom_layer: M2
+  top_layer: M3
+  tier1_iterations: 1
+  tier2_iterations: 5

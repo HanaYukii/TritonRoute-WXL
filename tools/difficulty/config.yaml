@@ -1,0 +1,42 @@
+# Difficulty scoring configuration
+# Values are initial estimates from grid shrink + lxp32c experiments.
+# Refine after Phase A data collection.
+
+scoring:
+  dimensions:
+    density:
+      metric: conv_rate          # DRV convergence rate (iter0 → iter5)
+      min_val: 0.27              # 27% = hardest observed (grid 100)
+      max_val: 0.99              # 99% = easiest observed (grid 400)
+      invert: true               # higher convergence = easier
+      secondary_metric: shorts   # short count at iter0 (informational)
+    complexity:
+      metric: avg_per_net        # AI router avg route/net
+      min_val: 1.0               # 1.0 = routed first try
+      max_val: 12.0              # calibrated: case_300 avg/net=11.0, headroom for harder cases
+      invert: false              # higher avg/net = harder
+    track:
+      metric: drv_i0_cov         # DRV@iter0 coefficient of variation across variants
+      min_val: 0.0               # 0% = perfectly stable
+      max_val: 0.46              # 46% = orig_s0 outlier level
+      invert: false              # higher variance = harder
+
+  levels:
+    - name: Easy
+      max_score: 0.25
+    - name: Medium
+      max_score: 0.50
+    - name: Hard
+      max_score: 0.75
+    - name: Very Hard
+      max_score: 1.0
+
+  tier1:
+    drv_iter0_threshold: 2000    # DRV@iter0 < this AND shorts=0 → "Likely Easy"
+    shorts_threshold: 0
+
+tritonroute:
+  openroad_bin: ~/OpenROAD/build/bin/openroad
+  lef_path: /tmp/n16_simplified.tlef
+  tier1_iterations: 1            # 1 iteration for fast screening
+  tier2_iterations: 5            # 5 iterations for full convergence

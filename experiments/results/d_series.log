@@ -1,0 +1,1553 @@
+=========================================
+D-series TritonRoute Benchmark — Thu Apr  9 02:50:14 CST 2026
+=========================================
+
+=== STEP 1: Generate ===
+Gen: D1_wb05_s100 ... Wrote /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D1_wb05_s100/D1_wb05_s100.txt (1280 nets, 16 obstacles)
+  n_actual=1280
+Gen: D1_wb05_s110 ... Wrote /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D1_wb05_s110/D1_wb05_s110.txt (1280 nets, 16 obstacles)
+  n_actual=1280
+Gen: D1_wb05_s120 ... Wrote /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D1_wb05_s120/D1_wb05_s120.txt (1280 nets, 16 obstacles)
+  n_actual=1280
+Gen: D2_wb06_s100 ... Wrote /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D2_wb06_s100/D2_wb06_s100.txt (1280 nets, 16 obstacles)
+  n_actual=1280
+Gen: D2_wb06_s110 ... Wrote /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D2_wb06_s110/D2_wb06_s110.txt (1280 nets, 16 obstacles)
+  n_actual=1280
+Gen: D2_wb06_s120 ... Wrote /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D2_wb06_s120/D2_wb06_s120.txt (1280 nets, 16 obstacles)
+  n_actual=1280
+Gen: D3_wb07_s100 ... Wrote /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D3_wb07_s100/D3_wb07_s100.txt (1280 nets, 16 obstacles)
+  n_actual=1280
+Gen: D3_wb07_s110 ... Wrote /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D3_wb07_s110/D3_wb07_s110.txt (1280 nets, 16 obstacles)
+  n_actual=1280
+Gen: D3_wb07_s120 ... Wrote /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D3_wb07_s120/D3_wb07_s120.txt (1280 nets, 16 obstacles)
+  n_actual=1280
+Gen: D4_wb075_s100 ... Wrote /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D4_wb075_s100/D4_wb075_s100.txt (1280 nets, 16 obstacles)
+  n_actual=1280
+Gen: D4_wb075_s110 ... Wrote /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D4_wb075_s110/D4_wb075_s110.txt (1280 nets, 16 obstacles)
+  n_actual=1280
+Gen: D4_wb075_s120 ... Wrote /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D4_wb075_s120/D4_wb075_s120.txt (1280 nets, 16 obstacles)
+  n_actual=1280
+
+=== STEP 2: Eval (AI Router) ===
+Eval: D1_wb05_s100 ... case: /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D1_wb05_s100/D1_wb05_s100.txt
+success: True
+Avg. routes per net: 2.00390625
+runtime: 131.648579120636
+episode runtime: 131.648579120636 +/- 0.0 (sec)
+  done (02:59)
+Eval: D1_wb05_s110 ... case: /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D1_wb05_s110/D1_wb05_s110.txt
+success: True
+Avg. routes per net: 2.1734375
+runtime: 126.79511404037476
+episode runtime: 126.79511404037476 +/- 0.0 (sec)
+  done (03:03)
+Eval: D1_wb05_s120 ... case: /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D1_wb05_s120/D1_wb05_s120.txt
+success: True
+Avg. routes per net: 2.0
+runtime: 122.08476400375366
+episode runtime: 122.08476400375366 +/- 0.0 (sec)
+  done (03:06)
+Eval: D2_wb06_s100 ... case: /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D2_wb06_s100/D2_wb06_s100.txt
+success: True
+Avg. routes per net: 2.009375
+runtime: 128.2125687599182
+episode runtime: 128.2125687599182 +/- 0.0 (sec)
+  done (03:10)
+Eval: D2_wb06_s110 ... case: /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D2_wb06_s110/D2_wb06_s110.txt
+success: True
+Avg. routes per net: 2.00234375
+runtime: 108.42985892295837
+episode runtime: 108.42985892295837 +/- 0.0 (sec)
+  done (03:13)
+Eval: D2_wb06_s120 ... case: /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D2_wb06_s120/D2_wb06_s120.txt
+success: True
+Avg. routes per net: 1.003125
+runtime: 47.15789222717285
+episode runtime: 47.15789222717285 +/- 0.0 (sec)
+  done (03:15)
+Eval: D3_wb07_s100 ... case: /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D3_wb07_s100/D3_wb07_s100.txt
+success: True
+Avg. routes per net: 3.78671875
+runtime: 186.61519813537598
+episode runtime: 186.61519813537598 +/- 0.0 (sec)
+  done (03:20)
+Eval: D3_wb07_s110 ... case: /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D3_wb07_s110/D3_wb07_s110.txt
+success: True
+Avg. routes per net: 2.00078125
+runtime: 139.5076448917389
+episode runtime: 139.5076448917389 +/- 0.0 (sec)
+  done (03:24)
+Eval: D3_wb07_s120 ... case: /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D3_wb07_s120/D3_wb07_s120.txt
+success: True
+Avg. routes per net: 2.0
+runtime: 131.78517651557922
+episode runtime: 131.78517651557922 +/- 0.0 (sec)
+  done (03:27)
+Eval: D4_wb075_s100 ... case: /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D4_wb075_s100/D4_wb075_s100.txt
+success: True
+Avg. routes per net: 2.0
+runtime: 123.15148901939392
+episode runtime: 123.15148901939392 +/- 0.0 (sec)
+  done (03:31)
+Eval: D4_wb075_s110 ... case: /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D4_wb075_s110/D4_wb075_s110.txt
+success: True
+Avg. routes per net: 2.0
+runtime: 215.57113361358643
+episode runtime: 215.57113361358643 +/- 0.0 (sec)
+  done (03:37)
+Eval: D4_wb075_s120 ... case: /nas3/hanayukii/Dr-RL/tools/generator/cases/d_series/D4_wb075_s120/D4_wb075_s120.txt
+success: True
+Avg. routes per net: 1.82890625
+runtime: 104.17087054252625
+episode runtime: 104.17087054252625 +/- 0.0 (sec)
+  done (03:40)
+
+=== STEP 3: DEF (scale=2.40, M4/M5) ===
+DEF: D1_wb05_s100 ... ok
+DEF: D1_wb05_s110 ... ok
+DEF: D1_wb05_s120 ... ok
+DEF: D2_wb06_s100 ... ok
+DEF: D2_wb06_s110 ... ok
+DEF: D2_wb06_s120 ... ok
+DEF: D3_wb07_s100 ... ok
+DEF: D3_wb07_s110 ... ok
+DEF: D3_wb07_s120 ... ok
+DEF: D4_wb075_s100 ... ok
+DEF: D4_wb075_s110 ... ok
+DEF: D4_wb075_s120 ... ok
+
+=== STEP 4: Fix tracks ===
+Fix tracks: D1_wb05_s100 ... ok
+Fix tracks: D1_wb05_s110 ... ok
+Fix tracks: D1_wb05_s120 ... ok
+Fix tracks: D2_wb06_s100 ... ok
+Fix tracks: D2_wb06_s110 ... ok
+Fix tracks: D2_wb06_s120 ... ok
+Fix tracks: D3_wb07_s100 ... ok
+Fix tracks: D3_wb07_s110 ... ok
+Fix tracks: D3_wb07_s120 ... ok
+Fix tracks: D4_wb075_s100 ... ok
+Fix tracks: D4_wb075_s110 ... ok
+Fix tracks: D4_wb075_s120 ... ok
+
+=== STEP 5: TritonRoute ===
+=== TR: D1_wb05_s100 (wb=0.5, s=100) ===
+[INFO ODB-0227] LEF file: /tmp/n16_simplified.tlef, created 38 layers, 681 vias, 1 library cells
+[INFO GRT-0111] Final number of vias: 2550
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
+Number of vias:       678
+Number of DEF vias:       0
+[INFO DRT-0167] List of default vias:
+    Completing 10% with 0 violations.
+    Completing 20% with 0 violations.
+    Completing 30% with 406 violations.
+    Completing 40% with 406 violations.
+    Completing 50% with 406 violations.
+    Completing 60% with 917 violations.
+    Completing 70% with 917 violations.
+    Completing 80% with 1367 violations.
+    Completing 90% with 1367 violations.
+    Completing 100% with 1729 violations.
+[INFO DRT-0199]   Number of violations = 1779.
+Total wire length = 4367 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2486 um.
+Total wire length on LAYER M5 = 1880 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2076.
+    Completing 10% with 1779 violations.
+    Completing 20% with 1779 violations.
+    Completing 30% with 1464 violations.
+    Completing 40% with 1464 violations.
+    Completing 50% with 1464 violations.
+    Completing 60% with 1115 violations.
+    Completing 70% with 1115 violations.
+    Completing 80% with 864 violations.
+    Completing 90% with 864 violations.
+    Completing 100% with 623 violations.
+[INFO DRT-0199]   Number of violations = 623.
+Total wire length = 4342 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2457 um.
+Total wire length on LAYER M5 = 1884 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2216.
+    Completing 10% with 623 violations.
+    Completing 20% with 623 violations.
+    Completing 30% with 611 violations.
+    Completing 40% with 611 violations.
+    Completing 50% with 611 violations.
+    Completing 60% with 594 violations.
+    Completing 70% with 594 violations.
+    Completing 80% with 582 violations.
+    Completing 90% with 582 violations.
+    Completing 100% with 557 violations.
+[INFO DRT-0199]   Number of violations = 557.
+Total wire length = 4335 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2444 um.
+Total wire length on LAYER M5 = 1891 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2226.
+    Completing 10% with 557 violations.
+    Completing 20% with 557 violations.
+    Completing 30% with 447 violations.
+    Completing 40% with 447 violations.
+    Completing 50% with 447 violations.
+    Completing 60% with 309 violations.
+    Completing 70% with 309 violations.
+    Completing 80% with 163 violations.
+    Completing 90% with 163 violations.
+    Completing 100% with 18 violations.
+[INFO DRT-0199]   Number of violations = 18.
+Total wire length = 4311 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2393 um.
+Total wire length on LAYER M5 = 1918 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2624.
+Total wire length = 4311 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2393 um.
+Total wire length on LAYER M5 = 1918 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2624.
+RESULT_DRV=18
+---
+=== TR: D1_wb05_s110 (wb=0.5, s=110) ===
+[INFO ODB-0227] LEF file: /tmp/n16_simplified.tlef, created 38 layers, 681 vias, 1 library cells
+[INFO GRT-0111] Final number of vias: 2503
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
+Number of vias:       678
+Number of DEF vias:       0
+[INFO DRT-0167] List of default vias:
+    Completing 10% with 0 violations.
+    Completing 20% with 0 violations.
+    Completing 30% with 481 violations.
+    Completing 40% with 481 violations.
+    Completing 50% with 481 violations.
+    Completing 60% with 1010 violations.
+    Completing 70% with 1010 violations.
+    Completing 80% with 1516 violations.
+    Completing 90% with 1516 violations.
+    Completing 100% with 1964 violations.
+[INFO DRT-0199]   Number of violations = 2037.
+Total wire length = 4384 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2473 um.
+Total wire length on LAYER M5 = 1910 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2036.
+    Completing 10% with 2037 violations.
+    Completing 20% with 2037 violations.
+    Completing 30% with 1713 violations.
+    Completing 40% with 1713 violations.
+    Completing 50% with 1713 violations.
+    Completing 60% with 1365 violations.
+    Completing 70% with 1365 violations.
+    Completing 80% with 1081 violations.
+    Completing 90% with 1081 violations.
+    Completing 100% with 716 violations.
+[INFO DRT-0199]   Number of violations = 716.
+Total wire length = 4353 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2454 um.
+Total wire length on LAYER M5 = 1898 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2169.
+    Completing 10% with 716 violations.
+    Completing 20% with 716 violations.
+    Completing 30% with 673 violations.
+    Completing 40% with 673 violations.
+    Completing 50% with 673 violations.
+    Completing 60% with 701 violations.
+    Completing 70% with 701 violations.
+    Completing 80% with 717 violations.
+    Completing 90% with 717 violations.
+    Completing 100% with 680 violations.
+[INFO DRT-0199]   Number of violations = 680.
+Total wire length = 4344 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2445 um.
+Total wire length on LAYER M5 = 1898 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2207.
+    Completing 10% with 680 violations.
+    Completing 20% with 680 violations.
+    Completing 30% with 543 violations.
+    Completing 40% with 543 violations.
+    Completing 50% with 543 violations.
+    Completing 60% with 405 violations.
+    Completing 70% with 405 violations.
+    Completing 80% with 242 violations.
+    Completing 90% with 242 violations.
+    Completing 100% with 89 violations.
+[INFO DRT-0199]   Number of violations = 89.
+Total wire length = 4320 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2394 um.
+Total wire length on LAYER M5 = 1926 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2587.
+Total wire length = 4320 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2394 um.
+Total wire length on LAYER M5 = 1926 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2587.
+RESULT_DRV=89
+---
+=== TR: D1_wb05_s120 (wb=0.5, s=120) ===
+[INFO ODB-0227] LEF file: /tmp/n16_simplified.tlef, created 38 layers, 681 vias, 1 library cells
+[INFO GRT-0111] Final number of vias: 2420
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
+Number of vias:       678
+Number of DEF vias:       0
+[INFO DRT-0167] List of default vias:
+    Completing 10% with 0 violations.
+    Completing 20% with 0 violations.
+    Completing 30% with 441 violations.
+    Completing 40% with 441 violations.
+    Completing 50% with 441 violations.
+    Completing 60% with 892 violations.
+    Completing 70% with 892 violations.
+    Completing 80% with 1307 violations.
+    Completing 90% with 1307 violations.
+    Completing 100% with 1731 violations.
+[INFO DRT-0199]   Number of violations = 1775.
+Total wire length = 4200 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2430 um.
+Total wire length on LAYER M5 = 1770 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 1988.
+    Completing 10% with 1775 violations.
+    Completing 20% with 1775 violations.
+    Completing 30% with 1435 violations.
+    Completing 40% with 1435 violations.
+    Completing 50% with 1435 violations.
+    Completing 60% with 1194 violations.
+    Completing 70% with 1194 violations.
+    Completing 80% with 884 violations.
+    Completing 90% with 884 violations.
+    Completing 100% with 593 violations.
+[INFO DRT-0199]   Number of violations = 593.
+Total wire length = 4176 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2418 um.
+Total wire length on LAYER M5 = 1757 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2092.
+    Completing 10% with 593 violations.
+    Completing 20% with 593 violations.
+    Completing 30% with 585 violations.
+    Completing 40% with 585 violations.
+    Completing 50% with 585 violations.
+    Completing 60% with 573 violations.
+    Completing 70% with 573 violations.
+    Completing 80% with 584 violations.
+    Completing 90% with 584 violations.
+    Completing 100% with 549 violations.
+[INFO DRT-0199]   Number of violations = 549.
+Total wire length = 4175 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2405 um.
+Total wire length on LAYER M5 = 1770 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2118.
+    Completing 10% with 549 violations.
+    Completing 20% with 549 violations.
+    Completing 30% with 431 violations.
+    Completing 40% with 431 violations.
+    Completing 50% with 431 violations.
+    Completing 60% with 300 violations.
+    Completing 70% with 300 violations.
+    Completing 80% with 174 violations.
+    Completing 90% with 174 violations.
+    Completing 100% with 40 violations.
+[INFO DRT-0199]   Number of violations = 40.
+Total wire length = 4146 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2346 um.
+Total wire length on LAYER M5 = 1799 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2490.
+Total wire length = 4146 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2346 um.
+Total wire length on LAYER M5 = 1799 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2490.
+RESULT_DRV=40
+---
+=== TR: D2_wb06_s100 (wb=0.6, s=100) ===
+[INFO ODB-0227] LEF file: /tmp/n16_simplified.tlef, created 38 layers, 681 vias, 1 library cells
+[INFO GRT-0111] Final number of vias: 2546
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
+Number of vias:       678
+Number of DEF vias:       0
+[INFO DRT-0167] List of default vias:
+    Completing 10% with 0 violations.
+    Completing 20% with 0 violations.
+    Completing 30% with 495 violations.
+    Completing 40% with 495 violations.
+    Completing 50% with 495 violations.
+    Completing 60% with 950 violations.
+    Completing 70% with 950 violations.
+    Completing 80% with 1362 violations.
+    Completing 90% with 1362 violations.
+    Completing 100% with 1803 violations.
+[INFO DRT-0199]   Number of violations = 1861.
+Total wire length = 4376 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2469 um.
+Total wire length on LAYER M5 = 1906 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2061.
+    Completing 10% with 1861 violations.
+    Completing 20% with 1861 violations.
+    Completing 30% with 1501 violations.
+    Completing 40% with 1501 violations.
+    Completing 50% with 1501 violations.
+    Completing 60% with 1267 violations.
+    Completing 70% with 1267 violations.
+    Completing 80% with 1011 violations.
+    Completing 90% with 1011 violations.
+    Completing 100% with 766 violations.
+[INFO DRT-0199]   Number of violations = 766.
+Total wire length = 4341 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2444 um.
+Total wire length on LAYER M5 = 1897 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2148.
+    Completing 10% with 766 violations.
+    Completing 20% with 766 violations.
+    Completing 30% with 749 violations.
+    Completing 40% with 749 violations.
+    Completing 50% with 749 violations.
+    Completing 60% with 689 violations.
+    Completing 70% with 689 violations.
+    Completing 80% with 692 violations.
+    Completing 90% with 692 violations.
+    Completing 100% with 675 violations.
+[INFO DRT-0199]   Number of violations = 675.
+Total wire length = 4335 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2437 um.
+Total wire length on LAYER M5 = 1897 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2189.
+    Completing 10% with 675 violations.
+    Completing 20% with 675 violations.
+    Completing 30% with 538 violations.
+    Completing 40% with 538 violations.
+    Completing 50% with 538 violations.
+    Completing 60% with 366 violations.
+    Completing 70% with 366 violations.
+    Completing 80% with 239 violations.
+    Completing 90% with 239 violations.
+    Completing 100% with 109 violations.
+[INFO DRT-0199]   Number of violations = 109.
+Total wire length = 4309 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2392 um.
+Total wire length on LAYER M5 = 1917 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2561.
+Total wire length = 4309 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2392 um.
+Total wire length on LAYER M5 = 1917 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2561.
+RESULT_DRV=109
+---
+=== TR: D2_wb06_s110 (wb=0.6, s=110) ===
+[INFO ODB-0227] LEF file: /tmp/n16_simplified.tlef, created 38 layers, 681 vias, 1 library cells
+[INFO GRT-0111] Final number of vias: 2559
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
+Number of vias:       678
+Number of DEF vias:       0
+[INFO DRT-0167] List of default vias:
+    Completing 10% with 0 violations.
+    Completing 20% with 0 violations.
+    Completing 30% with 464 violations.
+    Completing 40% with 464 violations.
+    Completing 50% with 464 violations.
+    Completing 60% with 948 violations.
+    Completing 70% with 948 violations.
+    Completing 80% with 1369 violations.
+    Completing 90% with 1369 violations.
+    Completing 100% with 1739 violations.
+[INFO DRT-0199]   Number of violations = 1791.
+Total wire length = 4384 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2485 um.
+Total wire length on LAYER M5 = 1898 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2116.
+    Completing 10% with 1791 violations.
+    Completing 20% with 1791 violations.
+    Completing 30% with 1425 violations.
+    Completing 40% with 1425 violations.
+    Completing 50% with 1425 violations.
+    Completing 60% with 1187 violations.
+    Completing 70% with 1187 violations.
+    Completing 80% with 948 violations.
+    Completing 90% with 948 violations.
+    Completing 100% with 747 violations.
+[INFO DRT-0199]   Number of violations = 747.
+Total wire length = 4363 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2471 um.
+Total wire length on LAYER M5 = 1892 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2200.
+    Completing 10% with 747 violations.
+    Completing 20% with 747 violations.
+    Completing 30% with 740 violations.
+    Completing 40% with 740 violations.
+    Completing 50% with 740 violations.
+    Completing 60% with 722 violations.
+    Completing 70% with 722 violations.
+    Completing 80% with 721 violations.
+    Completing 90% with 721 violations.
+    Completing 100% with 687 violations.
+[INFO DRT-0199]   Number of violations = 687.
+Total wire length = 4362 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2460 um.
+Total wire length on LAYER M5 = 1902 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2228.
+    Completing 10% with 687 violations.
+    Completing 20% with 687 violations.
+    Completing 30% with 516 violations.
+    Completing 40% with 516 violations.
+    Completing 50% with 516 violations.
+    Completing 60% with 393 violations.
+    Completing 70% with 393 violations.
+    Completing 80% with 249 violations.
+    Completing 90% with 249 violations.
+    Completing 100% with 85 violations.
+[INFO DRT-0199]   Number of violations = 85.
+Total wire length = 4339 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2419 um.
+Total wire length on LAYER M5 = 1919 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2658.
+Total wire length = 4339 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2419 um.
+Total wire length on LAYER M5 = 1919 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2658.
+RESULT_DRV=85
+---
+=== TR: D2_wb06_s120 (wb=0.6, s=120) ===
+[INFO ODB-0227] LEF file: /tmp/n16_simplified.tlef, created 38 layers, 681 vias, 1 library cells
+[INFO GRT-0111] Final number of vias: 2685
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
+Number of vias:       678
+Number of DEF vias:       0
+[INFO DRT-0167] List of default vias:
+    Completing 10% with 0 violations.
+    Completing 20% with 0 violations.
+    Completing 30% with 425 violations.
+    Completing 40% with 425 violations.
+    Completing 50% with 425 violations.
+    Completing 60% with 972 violations.
+    Completing 70% with 972 violations.
+    Completing 80% with 1388 violations.
+    Completing 90% with 1388 violations.
+    Completing 100% with 1801 violations.
+[INFO DRT-0199]   Number of violations = 1868.
+Total wire length = 4527 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2546 um.
+Total wire length on LAYER M5 = 1980 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2186.
+    Completing 10% with 1868 violations.
+    Completing 20% with 1868 violations.
+    Completing 30% with 1499 violations.
+    Completing 40% with 1499 violations.
+    Completing 50% with 1499 violations.
+    Completing 60% with 1181 violations.
+    Completing 70% with 1181 violations.
+    Completing 80% with 890 violations.
+    Completing 90% with 890 violations.
+    Completing 100% with 582 violations.
+[INFO DRT-0199]   Number of violations = 582.
+Total wire length = 4482 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2502 um.
+Total wire length on LAYER M5 = 1979 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2344.
+    Completing 10% with 582 violations.
+    Completing 20% with 582 violations.
+    Completing 30% with 565 violations.
+    Completing 40% with 565 violations.
+    Completing 50% with 565 violations.
+    Completing 60% with 570 violations.
+    Completing 70% with 570 violations.
+    Completing 80% with 603 violations.
+    Completing 90% with 603 violations.
+    Completing 100% with 607 violations.
+[INFO DRT-0199]   Number of violations = 607.
+Total wire length = 4484 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2501 um.
+Total wire length on LAYER M5 = 1983 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2323.
+    Completing 10% with 607 violations.
+    Completing 20% with 607 violations.
+    Completing 30% with 456 violations.
+    Completing 40% with 456 violations.
+    Completing 50% with 456 violations.
+    Completing 60% with 292 violations.
+    Completing 70% with 292 violations.
+    Completing 80% with 168 violations.
+    Completing 90% with 168 violations.
+    Completing 100% with 40 violations.
+[INFO DRT-0199]   Number of violations = 40.
+Total wire length = 4460 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2452 um.
+Total wire length on LAYER M5 = 2007 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2720.
+Total wire length = 4460 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2452 um.
+Total wire length on LAYER M5 = 2007 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2720.
+RESULT_DRV=40
+---
+=== TR: D3_wb07_s100 (wb=0.7, s=100) ===
+[INFO ODB-0227] LEF file: /tmp/n16_simplified.tlef, created 38 layers, 681 vias, 1 library cells
+[INFO GRT-0111] Final number of vias: 2520
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
+Number of vias:       678
+Number of DEF vias:       0
+[INFO DRT-0167] List of default vias:
+    Completing 10% with 0 violations.
+    Completing 20% with 0 violations.
+    Completing 30% with 504 violations.
+    Completing 40% with 504 violations.
+    Completing 50% with 504 violations.
+    Completing 60% with 881 violations.
+    Completing 70% with 881 violations.
+    Completing 80% with 1314 violations.
+    Completing 90% with 1314 violations.
+    Completing 100% with 1736 violations.
+[INFO DRT-0199]   Number of violations = 1800.
+Total wire length = 4511 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2611 um.
+Total wire length on LAYER M5 = 1900 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2119.
+    Completing 10% with 1800 violations.
+    Completing 20% with 1800 violations.
+    Completing 30% with 1512 violations.
+    Completing 40% with 1512 violations.
+    Completing 50% with 1512 violations.
+    Completing 60% with 1244 violations.
+    Completing 70% with 1244 violations.
+    Completing 80% with 941 violations.
+    Completing 90% with 941 violations.
+    Completing 100% with 680 violations.
+[INFO DRT-0199]   Number of violations = 680.
+Total wire length = 4505 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2576 um.
+Total wire length on LAYER M5 = 1928 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2231.
+    Completing 10% with 680 violations.
+    Completing 20% with 680 violations.
+    Completing 30% with 642 violations.
+    Completing 40% with 642 violations.
+    Completing 50% with 642 violations.
+    Completing 60% with 628 violations.
+    Completing 70% with 628 violations.
+    Completing 80% with 635 violations.
+    Completing 90% with 635 violations.
+    Completing 100% with 615 violations.
+[INFO DRT-0199]   Number of violations = 615.
+Total wire length = 4490 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2570 um.
+Total wire length on LAYER M5 = 1920 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2240.
+    Completing 10% with 615 violations.
+    Completing 20% with 615 violations.
+    Completing 30% with 491 violations.
+    Completing 40% with 491 violations.
+    Completing 50% with 491 violations.
+    Completing 60% with 365 violations.
+    Completing 70% with 365 violations.
+    Completing 80% with 229 violations.
+    Completing 90% with 229 violations.
+    Completing 100% with 87 violations.
+[INFO DRT-0199]   Number of violations = 87.
+Total wire length = 4468 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2540 um.
+Total wire length on LAYER M5 = 1928 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2632.
+Total wire length = 4468 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2540 um.
+Total wire length on LAYER M5 = 1928 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2632.
+RESULT_DRV=87
+---
+=== TR: D3_wb07_s110 (wb=0.7, s=110) ===
+[INFO ODB-0227] LEF file: /tmp/n16_simplified.tlef, created 38 layers, 681 vias, 1 library cells
+[INFO GRT-0111] Final number of vias: 2575
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
+Number of vias:       678
+Number of DEF vias:       0
+[INFO DRT-0167] List of default vias:
+    Completing 10% with 0 violations.
+    Completing 20% with 0 violations.
+    Completing 30% with 565 violations.
+    Completing 40% with 565 violations.
+    Completing 50% with 565 violations.
+    Completing 60% with 933 violations.
+    Completing 70% with 933 violations.
+    Completing 80% with 1458 violations.
+    Completing 90% with 1458 violations.
+    Completing 100% with 1880 violations.
+[INFO DRT-0199]   Number of violations = 1941.
+Total wire length = 4639 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2641 um.
+Total wire length on LAYER M5 = 1997 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2138.
+    Completing 10% with 1941 violations.
+    Completing 20% with 1941 violations.
+    Completing 30% with 1614 violations.
+    Completing 40% with 1614 violations.
+    Completing 50% with 1614 violations.
+    Completing 60% with 1300 violations.
+    Completing 70% with 1300 violations.
+    Completing 80% with 1035 violations.
+    Completing 90% with 1035 violations.
+    Completing 100% with 671 violations.
+[INFO DRT-0199]   Number of violations = 671.
+Total wire length = 4595 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2625 um.
+Total wire length on LAYER M5 = 1969 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2265.
+    Completing 10% with 671 violations.
+    Completing 20% with 671 violations.
+    Completing 30% with 649 violations.
+    Completing 40% with 649 violations.
+    Completing 50% with 649 violations.
+    Completing 60% with 660 violations.
+    Completing 70% with 660 violations.
+    Completing 80% with 617 violations.
+    Completing 90% with 617 violations.
+    Completing 100% with 626 violations.
+[INFO DRT-0199]   Number of violations = 626.
+Total wire length = 4588 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2625 um.
+Total wire length on LAYER M5 = 1963 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2274.
+    Completing 10% with 626 violations.
+    Completing 20% with 626 violations.
+    Completing 30% with 425 violations.
+    Completing 40% with 425 violations.
+    Completing 50% with 425 violations.
+    Completing 60% with 357 violations.
+    Completing 70% with 357 violations.
+    Completing 80% with 157 violations.
+    Completing 90% with 157 violations.
+    Completing 100% with 44 violations.
+[INFO DRT-0199]   Number of violations = 44.
+Total wire length = 4564 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2562 um.
+Total wire length on LAYER M5 = 2001 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2700.
+Total wire length = 4564 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2562 um.
+Total wire length on LAYER M5 = 2001 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2700.
+RESULT_DRV=44
+---
+=== TR: D3_wb07_s120 (wb=0.7, s=120) ===
+[INFO ODB-0227] LEF file: /tmp/n16_simplified.tlef, created 38 layers, 681 vias, 1 library cells
+[INFO GRT-0111] Final number of vias: 2596
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
+Number of vias:       678
+Number of DEF vias:       0
+[INFO DRT-0167] List of default vias:
+    Completing 10% with 0 violations.
+    Completing 20% with 0 violations.
+    Completing 30% with 506 violations.
+    Completing 40% with 506 violations.
+    Completing 50% with 506 violations.
+    Completing 60% with 918 violations.
+    Completing 70% with 918 violations.
+    Completing 80% with 1472 violations.
+    Completing 90% with 1472 violations.
+    Completing 100% with 1932 violations.
+[INFO DRT-0199]   Number of violations = 2006.
+Total wire length = 4521 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2518 um.
+Total wire length on LAYER M5 = 2003 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2109.
+    Completing 10% with 2006 violations.
+    Completing 20% with 2006 violations.
+    Completing 30% with 1678 violations.
+    Completing 40% with 1678 violations.
+    Completing 50% with 1678 violations.
+    Completing 60% with 1398 violations.
+    Completing 70% with 1398 violations.
+    Completing 80% with 996 violations.
+    Completing 90% with 996 violations.
+    Completing 100% with 633 violations.
+[INFO DRT-0199]   Number of violations = 633.
+Total wire length = 4496 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2491 um.
+Total wire length on LAYER M5 = 2004 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2281.
+    Completing 10% with 633 violations.
+    Completing 20% with 633 violations.
+    Completing 30% with 643 violations.
+    Completing 40% with 643 violations.
+    Completing 50% with 643 violations.
+    Completing 60% with 615 violations.
+    Completing 70% with 615 violations.
+    Completing 80% with 598 violations.
+    Completing 90% with 598 violations.
+    Completing 100% with 546 violations.
+[INFO DRT-0199]   Number of violations = 546.
+Total wire length = 4485 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2483 um.
+Total wire length on LAYER M5 = 2001 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2305.
+    Completing 10% with 546 violations.
+    Completing 20% with 546 violations.
+    Completing 30% with 404 violations.
+    Completing 40% with 404 violations.
+    Completing 50% with 404 violations.
+    Completing 60% with 280 violations.
+    Completing 70% with 280 violations.
+    Completing 80% with 138 violations.
+    Completing 90% with 138 violations.
+    Completing 100% with 20 violations.
+[INFO DRT-0199]   Number of violations = 20.
+Total wire length = 4463 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2454 um.
+Total wire length on LAYER M5 = 2009 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2715.
+Total wire length = 4463 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2454 um.
+Total wire length on LAYER M5 = 2009 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2715.
+RESULT_DRV=20
+---
+=== TR: D4_wb075_s100 (wb=0.75, s=100) ===
+[INFO ODB-0227] LEF file: /tmp/n16_simplified.tlef, created 38 layers, 681 vias, 1 library cells
+[INFO GRT-0111] Final number of vias: 2626
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
+Number of vias:       678
+Number of DEF vias:       0
+[INFO DRT-0167] List of default vias:
+    Completing 10% with 0 violations.
+    Completing 20% with 0 violations.
+    Completing 30% with 492 violations.
+    Completing 40% with 492 violations.
+    Completing 50% with 492 violations.
+    Completing 60% with 811 violations.
+    Completing 70% with 811 violations.
+    Completing 80% with 1228 violations.
+    Completing 90% with 1228 violations.
+    Completing 100% with 1662 violations.
+[INFO DRT-0199]   Number of violations = 1742.
+Total wire length = 4587 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2601 um.
+Total wire length on LAYER M5 = 1985 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2145.
+    Completing 10% with 1742 violations.
+    Completing 20% with 1742 violations.
+    Completing 30% with 1461 violations.
+    Completing 40% with 1461 violations.
+    Completing 50% with 1461 violations.
+    Completing 60% with 1168 violations.
+    Completing 70% with 1168 violations.
+    Completing 80% with 933 violations.
+    Completing 90% with 933 violations.
+    Completing 100% with 661 violations.
+[INFO DRT-0199]   Number of violations = 661.
+Total wire length = 4550 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2584 um.
+Total wire length on LAYER M5 = 1966 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2252.
+    Completing 10% with 661 violations.
+    Completing 20% with 661 violations.
+    Completing 30% with 622 violations.
+    Completing 40% with 622 violations.
+    Completing 50% with 622 violations.
+    Completing 60% with 577 violations.
+    Completing 70% with 577 violations.
+    Completing 80% with 568 violations.
+    Completing 90% with 568 violations.
+    Completing 100% with 557 violations.
+[INFO DRT-0199]   Number of violations = 557.
+Total wire length = 4549 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2580 um.
+Total wire length on LAYER M5 = 1969 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2274.
+    Completing 10% with 557 violations.
+    Completing 20% with 557 violations.
+    Completing 30% with 370 violations.
+    Completing 40% with 370 violations.
+    Completing 50% with 370 violations.
+    Completing 60% with 281 violations.
+    Completing 70% with 281 violations.
+    Completing 80% with 146 violations.
+    Completing 90% with 146 violations.
+    Completing 100% with 28 violations.
+[INFO DRT-0199]   Number of violations = 28.
+Total wire length = 4524 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2535 um.
+Total wire length on LAYER M5 = 1989 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2649.
+Total wire length = 4524 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2535 um.
+Total wire length on LAYER M5 = 1989 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2649.
+RESULT_DRV=28
+---
+=== TR: D4_wb075_s110 (wb=0.75, s=110) ===
+[INFO ODB-0227] LEF file: /tmp/n16_simplified.tlef, created 38 layers, 681 vias, 1 library cells
+[INFO GRT-0111] Final number of vias: 2610
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
+Number of vias:       678
+Number of DEF vias:       0
+[INFO DRT-0167] List of default vias:
+    Completing 10% with 0 violations.
+    Completing 20% with 0 violations.
+    Completing 30% with 480 violations.
+    Completing 40% with 480 violations.
+    Completing 50% with 480 violations.
+    Completing 60% with 853 violations.
+    Completing 70% with 853 violations.
+    Completing 80% with 1364 violations.
+    Completing 90% with 1364 violations.
+    Completing 100% with 1737 violations.
+[INFO DRT-0199]   Number of violations = 1807.
+Total wire length = 4533 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2589 um.
+Total wire length on LAYER M5 = 1944 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2130.
+    Completing 10% with 1807 violations.
+    Completing 20% with 1807 violations.
+    Completing 30% with 1470 violations.
+    Completing 40% with 1470 violations.
+    Completing 50% with 1470 violations.
+    Completing 60% with 1189 violations.
+    Completing 70% with 1189 violations.
+    Completing 80% with 927 violations.
+    Completing 90% with 927 violations.
+    Completing 100% with 628 violations.
+[INFO DRT-0199]   Number of violations = 628.
+Total wire length = 4500 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2568 um.
+Total wire length on LAYER M5 = 1931 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2280.
+    Completing 10% with 628 violations.
+    Completing 20% with 628 violations.
+    Completing 30% with 639 violations.
+    Completing 40% with 639 violations.
+    Completing 50% with 639 violations.
+    Completing 60% with 632 violations.
+    Completing 70% with 632 violations.
+    Completing 80% with 636 violations.
+    Completing 90% with 636 violations.
+    Completing 100% with 633 violations.
+[INFO DRT-0199]   Number of violations = 633.
+Total wire length = 4497 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2561 um.
+Total wire length on LAYER M5 = 1936 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2298.
+    Completing 10% with 633 violations.
+    Completing 20% with 633 violations.
+    Completing 30% with 467 violations.
+    Completing 40% with 467 violations.
+    Completing 50% with 467 violations.
+    Completing 60% with 354 violations.
+    Completing 70% with 354 violations.
+    Completing 80% with 171 violations.
+    Completing 90% with 171 violations.
+    Completing 100% with 25 violations.
+[INFO DRT-0199]   Number of violations = 25.
+Total wire length = 4481 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2507 um.
+Total wire length on LAYER M5 = 1974 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2735.
+Total wire length = 4481 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2507 um.
+Total wire length on LAYER M5 = 1974 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2735.
+RESULT_DRV=25
+---
+=== TR: D4_wb075_s120 (wb=0.75, s=120) ===
+[INFO ODB-0227] LEF file: /tmp/n16_simplified.tlef, created 38 layers, 681 vias, 1 library cells
+[INFO GRT-0111] Final number of vias: 2573
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
+Number of vias:       678
+Number of DEF vias:       0
+[INFO DRT-0167] List of default vias:
+    Completing 10% with 0 violations.
+    Completing 20% with 0 violations.
+    Completing 30% with 416 violations.
+    Completing 40% with 416 violations.
+    Completing 50% with 416 violations.
+    Completing 60% with 887 violations.
+    Completing 70% with 887 violations.
+    Completing 80% with 1346 violations.
+    Completing 90% with 1346 violations.
+    Completing 100% with 1825 violations.
+[INFO DRT-0199]   Number of violations = 1878.
+Total wire length = 4524 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2539 um.
+Total wire length on LAYER M5 = 1984 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2083.
+    Completing 10% with 1878 violations.
+    Completing 20% with 1878 violations.
+    Completing 30% with 1551 violations.
+    Completing 40% with 1551 violations.
+    Completing 50% with 1551 violations.
+    Completing 60% with 1234 violations.
+    Completing 70% with 1234 violations.
+    Completing 80% with 945 violations.
+    Completing 90% with 945 violations.
+    Completing 100% with 680 violations.
+[INFO DRT-0199]   Number of violations = 680.
+Total wire length = 4508 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2521 um.
+Total wire length on LAYER M5 = 1986 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2224.
+    Completing 10% with 680 violations.
+    Completing 20% with 680 violations.
+    Completing 30% with 708 violations.
+    Completing 40% with 708 violations.
+    Completing 50% with 708 violations.
+    Completing 60% with 723 violations.
+    Completing 70% with 723 violations.
+    Completing 80% with 702 violations.
+    Completing 90% with 702 violations.
+    Completing 100% with 698 violations.
+[INFO DRT-0199]   Number of violations = 698.
+Total wire length = 4504 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2509 um.
+Total wire length on LAYER M5 = 1995 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2242.
+    Completing 10% with 698 violations.
+    Completing 20% with 698 violations.
+    Completing 30% with 570 violations.
+    Completing 40% with 570 violations.
+    Completing 50% with 570 violations.
+    Completing 60% with 411 violations.
+    Completing 70% with 411 violations.
+    Completing 80% with 258 violations.
+    Completing 90% with 258 violations.
+    Completing 100% with 84 violations.
+[INFO DRT-0199]   Number of violations = 84.
+Total wire length = 4479 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2465 um.
+Total wire length on LAYER M5 = 2014 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2698.
+Total wire length = 4479 um.
+Total wire length on LAYER M1 = 0 um.
+Total wire length on LAYER M2 = 0 um.
+Total wire length on LAYER M3 = 0 um.
+Total wire length on LAYER M4 = 2465 um.
+Total wire length on LAYER M5 = 2014 um.
+Total wire length on LAYER M6 = 0 um.
+Total wire length on LAYER M7 = 0 um.
+Total wire length on LAYER M8 = 0 um.
+Total wire length on LAYER M9 = 0 um.
+Total wire length on LAYER M10 = 0 um.
+Total wire length on LAYER AP = 0 um.
+Total number of vias = 2698.
+RESULT_DRV=84
+---
+
+=========================================
+=== D-series COMPLETE — Thu Apr  9 03:51:14 CST 2026 ===
+=========================================
