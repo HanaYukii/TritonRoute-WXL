@@ -27,6 +27,8 @@
  */
 
 #include <chrono>
+#include <algorithm>
+#include <iomanip>
 #include <fstream>
 #include <boost/io/ios_state.hpp>
 //#include <taskflow/taskflow.hpp>
@@ -1794,6 +1796,10 @@ void FlexDR::searchRepair(int iter, int size, int offset, int mazeEndIter,
   frTime t;
   //bool TEST = false;
   //bool TEST = true;
+
+  // PQ entry statistics
+  std::vector<int> allPQEntries;
+  std::map<int, std::vector<int>> pinCountPQEntries;
   if (VERBOSE > 0) {
     cout <<endl <<"start " <<iter;
     string suffix;
@@ -2043,6 +2049,12 @@ void FlexDR::searchRepair(int iter, int size, int offset, int mazeEndIter,
         }
         // single thread
         for (int i = 0; i < (int)workersInBatch.size(); i++) {
+          for (auto &drNet: workersInBatch[i]->getNets()) {
+            int pq = drNet->getNumPQEntries();
+            int pinCnt = drNet->getNumDRPins();
+            allPQEntries.push_back(pq);
+            pinCountPQEntries[pinCnt].push_back(pq);
+          }
           workersInBatch[i]->end();
         }
         workersInBatch.clear();
@@ -2076,6 +2088,32 @@ void FlexDR::searchRepair(int iter, int size, int offset, int mazeEndIter,
     if (enableDRC) {
       cout <<"  number of violations = " <<getDesign()->getTopBlock()->getNumMarkers() <<endl;
       reportViolations();
+      if (!allPQEntries.empty()) {
+        std::sort(allPQEntries.begin(), allPQEntries.end());
+        long long sum = 0;
+        for (auto v: allPQEntries) sum += v;
+        int n = (int)allPQEntries.size();
+        int med = (n % 2 == 1) ? allPQEntries[n / 2] : (allPQEntries[n / 2 - 1] + allPQEntries[n / 2]) / 2;
+        cout <<"  PQ push stats (" <<n <<" routed nets): mean=" <<(sum / n) <<" median=" <<med
+             <<" min=" <<allPQEntries.front() <<" max=" <<allPQEntries.back() <<endl;
+        cout <<"  PQ by net degree (drPins):" <<endl;
+        cout <<"    pins  nets    mean  median     min     max" <<endl;
+        cout <<"    ----  ----  ------  ------  ------  ------" <<endl;
+        for (auto &kv: pinCountPQEntries) {
+          auto &v = kv.second;
+          std::sort(v.begin(), v.end());
+          long long s = 0;
+          for (auto x: v) s += x;
+          int cnt = (int)v.size();
+          int m = (cnt % 2 == 1) ? v[cnt / 2] : (v[cnt / 2 - 1] + v[cnt / 2]) / 2;
+          cout <<"    " <<std::setw(4) <<kv.first
+               <<"  " <<std::setw(4) <<cnt
+               <<"  " <<std::setw(6) <<(s / cnt)
+               <<"  " <<std::setw(6) <<m
+               <<"  " <<std::setw(6) <<v.front()
+               <<"  " <<std::setw(6) <<v.back() <<endl;
+        }
+      }
     } else {
       cout <<"  number of quick violations = " <<numQuickMarkers <<endl;
     }

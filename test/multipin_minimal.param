@@ -1,0 +1,7 @@
+lef:test/multipin_minimal/multipin.input.lef
+def:test/multipin_minimal/multipin.input.def
+guide:test/multipin_minimal/multipin.input.guide
+output:test/multipin_minimal_out.def
+outputDRC:test/multipin_minimal_drc.rpt
+threads:4
+verbose:1

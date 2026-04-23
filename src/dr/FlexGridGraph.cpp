@@ -630,6 +630,7 @@ void FlexGridGraph::resetStatus() {
   resetDst();
   resetAStarCosts();
   resetPrevNodeDir();
+  pqPushCount_ = 0;
 }
 
 void FlexGridGraph::resetSrc() {

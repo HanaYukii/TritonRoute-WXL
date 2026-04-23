@@ -2291,10 +2291,12 @@ void FlexDRWorker::initNets_numPinsIn() {
       allPins.clear();
       pinRegionQuery.query(bgi::intersects(boostb), back_inserter(allPins));
       net->setNumPinsIn(allPins.size());
+      net->setNumDRPins((int)net->getPins().size());
       frBox tmpBox(x1, y1, x2, y2);
       net->setPinBox(tmpBox);
     } else {
       net->setNumPinsIn(99999);
+      net->setNumDRPins((int)net->getPins().size());
       net->setPinBox(getExtBox());
     }
   }
