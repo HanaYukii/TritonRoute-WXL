@@ -1975,7 +1975,6 @@ void FlexDRWorker::route_2_init(deque<drNet*> &rerouteNets) {
 
 void FlexDRWorker::mazeNetInit(drNet* net) {
   gridGraph.resetStatus();
-  net->resetNumPQEntries();
   // sub term / instterm cost when net is about to route
   initMazeCost_terms(net->getFrNetTerms(), false, true);
   // unblock planarTerm blocking for own net's I/O pins

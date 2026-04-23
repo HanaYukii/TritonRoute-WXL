@@ -2051,11 +2051,9 @@ void FlexDR::searchRepair(int iter, int size, int offset, int mazeEndIter,
         for (int i = 0; i < (int)workersInBatch.size(); i++) {
           for (auto &drNet: workersInBatch[i]->getNets()) {
             int pq = drNet->getNumPQEntries();
-            if (pq > 0) {
-              int pinCnt = drNet->getNumPinsIn();
-              allPQEntries.push_back(pq);
-              pinCountPQEntries[pinCnt].push_back(pq);
-            }
+            int pinCnt = drNet->getNumDRPins();
+            allPQEntries.push_back(pq);
+            pinCountPQEntries[pinCnt].push_back(pq);
           }
           workersInBatch[i]->end();
         }
@@ -2095,10 +2093,10 @@ void FlexDR::searchRepair(int iter, int size, int offset, int mazeEndIter,
         long long sum = 0;
         for (auto v: allPQEntries) sum += v;
         int n = (int)allPQEntries.size();
-        int med = allPQEntries[n / 2];
-        cout <<"  PQ push stats (" <<n <<" nets): mean=" <<(sum / n) <<" median=" <<med
+        int med = (n % 2 == 1) ? allPQEntries[n / 2] : (allPQEntries[n / 2 - 1] + allPQEntries[n / 2]) / 2;
+        cout <<"  PQ push stats (" <<n <<" routed nets): mean=" <<(sum / n) <<" median=" <<med
              <<" min=" <<allPQEntries.front() <<" max=" <<allPQEntries.back() <<endl;
-        cout <<"  PQ by pin count:" <<endl;
+        cout <<"  PQ by net degree (drPins):" <<endl;
         cout <<"    pins  nets    mean  median     min     max" <<endl;
         cout <<"    ----  ----  ------  ------  ------  ------" <<endl;
         for (auto &kv: pinCountPQEntries) {
@@ -2107,10 +2105,11 @@ void FlexDR::searchRepair(int iter, int size, int offset, int mazeEndIter,
           long long s = 0;
           for (auto x: v) s += x;
           int cnt = (int)v.size();
+          int m = (cnt % 2 == 1) ? v[cnt / 2] : (v[cnt / 2 - 1] + v[cnt / 2]) / 2;
           cout <<"    " <<std::setw(4) <<kv.first
                <<"  " <<std::setw(4) <<cnt
                <<"  " <<std::setw(6) <<(s / cnt)
-               <<"  " <<std::setw(6) <<v[cnt / 2]
+               <<"  " <<std::setw(6) <<m
                <<"  " <<std::setw(6) <<v.front()
                <<"  " <<std::setw(6) <<v.back() <<endl;
         }

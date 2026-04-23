@@ -43,7 +43,7 @@ namespace fr {
     drNet(): drBlockObject(), pins(), extConnFigs(), routeConnFigs(), bestRouteConnFigs(),
              fNetTerms(), fNet(nullptr), modified(false), numMarkers(0), numPinsIn(0), 
              markerDist(std::numeric_limits<frCoord>::max()), allowRipup(true), pinBox(), ripup(false),
-             numReroutes(0), numPQEntries(0), inQueue(false), routed(false), origGuides() {}
+             numReroutes(0), numPQEntries(0), numDRPins(0), inQueue(false), routed(false), origGuides() {}
     // getters
     const std::vector<std::unique_ptr<drPin> >& getPins() const {
       return pins;
@@ -104,6 +104,9 @@ namespace fr {
     }
     int getNumPQEntries() const {
       return numPQEntries;
+    }
+    int getNumDRPins() const {
+      return numDRPins;
     }
     bool isInQueue() const {
       return inQueue;
@@ -171,6 +174,9 @@ namespace fr {
     }
     void setNumPinsIn(int in) {
       numPinsIn = in;
+    }
+    void setNumDRPins(int in) {
+      numDRPins = in;
     }
     void updateMarkerDist(frCoord in) {
       markerDist = std::min(markerDist, in);
@@ -256,6 +262,7 @@ namespace fr {
     // new
     int                                          numReroutes;
     int                                          numPQEntries;
+    int                                          numDRPins;
     bool                                         inQueue;
     bool                                         routed;
 
