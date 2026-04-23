@@ -261,7 +261,7 @@ namespace fr {
     bool                                         ripup;
     // new
     int                                          numReroutes;
-    int                                          numPQEntries;
+    int                                          numPQEntries; // accumulates across ripup-reroute; relies on per-worker fresh construction, not manual reset
     int                                          numDRPins;
     bool                                         inQueue;
     bool                                         routed;
