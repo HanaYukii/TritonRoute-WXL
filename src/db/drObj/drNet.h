@@ -43,7 +43,7 @@ namespace fr {
     drNet(): drBlockObject(), pins(), extConnFigs(), routeConnFigs(), bestRouteConnFigs(),
              fNetTerms(), fNet(nullptr), modified(false), numMarkers(0), numPinsIn(0), 
              markerDist(std::numeric_limits<frCoord>::max()), allowRipup(true), pinBox(), ripup(false),
-             numReroutes(0), inQueue(false), routed(false), origGuides() {}
+             numReroutes(0), numPQEntries(0), inQueue(false), routed(false), origGuides() {}
     // getters
     const std::vector<std::unique_ptr<drPin> >& getPins() const {
       return pins;
@@ -101,6 +101,9 @@ namespace fr {
     }
     int getNumReroutes() const {
       return numReroutes;
+    }
+    int getNumPQEntries() const {
+      return numPQEntries;
     }
     bool isInQueue() const {
       return inQueue;
@@ -193,6 +196,12 @@ namespace fr {
     void resetNumReroutes() {
       numReroutes = 0;
     }
+    void addNumPQEntries(int n) {
+      numPQEntries += n;
+    }
+    void resetNumPQEntries() {
+      numPQEntries = 0;
+    }
     void setInQueue() {
       inQueue = true;
     }
@@ -246,6 +255,7 @@ namespace fr {
     bool                                         ripup;
     // new
     int                                          numReroutes;
+    int                                          numPQEntries;
     bool                                         inQueue;
     bool                                         routed;
 

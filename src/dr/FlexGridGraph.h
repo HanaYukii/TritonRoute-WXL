@@ -802,6 +802,12 @@ namespace fr {
       ggDRCCost    = drcCostIn;
       ggMarkerCost = markerCostIn;
     }
+    int getPQPushCount() const {
+      return pqPushCount_;
+    }
+    void resetPQPushCount() {
+      pqPushCount_ = 0;
+    }
     frCoord getHalfViaEncArea(frMIdx z, bool isLayer1) const {
       return (isLayer1 ? (*halfViaEncArea)[z].first: (*halfViaEncArea)[z].second);
     }
@@ -878,6 +884,7 @@ namespace fr {
     frUInt4                                    ggDRCCost;
     frUInt4                                    ggMarkerCost;
     // temporary variables
+    int                                        pqPushCount_;
     FlexWavefront                              wavefront;
     const std::vector<std::pair<frCoord, frCoord> >* halfViaEncArea; // std::pair<layer1area, layer2area>
     // via2viaMinLen[z][0], last via is down, curr via is down

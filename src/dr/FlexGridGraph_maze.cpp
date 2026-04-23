@@ -148,6 +148,7 @@ using namespace fr;
           getPrevAstarNodeDir(tailIdx.x(), tailIdx.y(), tailIdx.z()) == tailDir) {
         setPrevAstarNodeDir(tailIdx.x(), tailIdx.y(), tailIdx.z(), tailDir);
         wavefront.push(nextWavefrontGrid);
+        ++pqPushCount_;
         if (enableOutput) {
           std::cout << "    commit (" << tailIdx.x() << ", " << tailIdx.y() << ", " << tailIdx.z() << ") prev accessing dir = " << (int)tailDir << "\n";
         }
@@ -155,6 +156,7 @@ using namespace fr;
     } else {  
       // add to wavefront
       wavefront.push(nextWavefrontGrid);
+      ++pqPushCount_;
     }
   // } else {
   //   // update grid astar cost if needed (non-buffer enablement)
@@ -847,6 +849,7 @@ bool FlexGridGraph::search(vector<FlexMazeIdx> &connComps, drPin* nextPin, vecto
                                std::numeric_limits<frCoord>::max(),
                                currDist, 0, getEstCost(idx, dstMazeIdx1, dstMazeIdx2, frDirEnum::UNKNOWN)/*, frDirEnum::UNKNOWN*/);
     wavefront.push(currGrid);
+    ++pqPushCount_;
     if (enableOutput) {
       cout <<"src add to wavefront (" <<idx.x() <<", " <<idx.y() <<", " <<idx.z() <<")" <<endl;
     }

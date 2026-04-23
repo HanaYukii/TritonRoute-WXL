@@ -1975,6 +1975,7 @@ void FlexDRWorker::route_2_init(deque<drNet*> &rerouteNets) {
 
 void FlexDRWorker::mazeNetInit(drNet* net) {
   gridGraph.resetStatus();
+  net->resetNumPQEntries();
   // sub term / instterm cost when net is about to route
   initMazeCost_terms(net->getFrNetTerms(), false, true);
   // unblock planarTerm blocking for own net's I/O pins
@@ -3825,11 +3826,13 @@ bool FlexDRWorker::routeNet(drNet* net) {
     //   cout << "next pin is boundary pin\n";
     // }    
     if (gridGraph.search(connComps, nextPin, path, ccMazeIdx1, ccMazeIdx2, centerPt)) {
+      net->addNumPQEntries(gridGraph.getPQPushCount());
       routeNet_postAstarUpdate(path, connComps, unConnPins, mazeIdx2unConnPins, isFirstConn);
       routeNet_postAstarWritePath(net, path, realPinAPMazeIdx/*, apSVia*/);
       routeNet_postAstarPatchMinAreaVio(net, path, areaMap);
       isFirstConn = false;
     } else {
+      net->addNumPQEntries(gridGraph.getPQPushCount());
       //int apCnt = 0;
       //for (auto &ap: nextPin->getAccessPatterns()) {
       //  auto apPtr = ap.get();

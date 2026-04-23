@@ -1,0 +1,7 @@
+lef:/nas3/hanayukii/OpenROAD/src/drt/test/testcase/ispd18_sample/ispd18_sample.input.lef
+def:/nas3/hanayukii/OpenROAD/src/drt/test/testcase/ispd18_sample/ispd18_sample.input.def
+guide:/nas3/hanayukii/OpenROAD/src/drt/test/testcase/ispd18_sample/ispd18_sample.input.guide
+output:/nas3/hanayukii/TritonRoute-WXL-fork/test/ispd18_sample_out.def
+outputDRC:/nas3/hanayukii/TritonRoute-WXL-fork/test/ispd18_sample_drc.rpt
+threads:4
+verbose:1
